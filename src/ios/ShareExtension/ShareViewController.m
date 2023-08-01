@@ -333,6 +333,7 @@
 
 - (NSString *) saveFileToAppGroupFolder: (NSURL*)url {
   NSURL *targetUrl = [[self.fileManager containerURLForSecurityApplicationGroupIdentifier:SHAREEXT_GROUP_IDENTIFIER] URLByAppendingPathComponent:url.lastPathComponent];
+  [self.fileManager removeItemAtURL:targetUrl error:nil];
   [self.fileManager copyItemAtURL:url toURL:targetUrl error:nil];
 
   return targetUrl.absoluteString;
