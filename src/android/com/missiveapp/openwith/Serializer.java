@@ -1,5 +1,9 @@
 package com.missiveapp.openwith;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.ClipData;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -9,9 +13,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.webkit.URLUtil;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * Handle serialization of Android objects ready to be sent to javascript.
@@ -38,6 +39,10 @@ class Serializer {
 
     if (items == null || items.length() == 0) {
       items = itemsFromExtras(contentResolver, intent.getExtras());
+    }
+
+    if (items == null) {
+      items = itemsFromData(contentResolver, intent.getData());
     }
 
     if (items == null) {
@@ -127,6 +132,34 @@ class Serializer {
     final JSONObject item = toJSONObject(
       contentResolver,
       (Uri) extras.get(Intent.EXTRA_STREAM)
+    );
+
+    if (item == null) {
+      return null;
+    }
+
+    final JSONObject[] items = new JSONObject[1];
+    items[0] = item;
+
+    return new JSONArray(items);
+  }
+
+  /** Extract the list of items from the intent's data.
+   * This is the case for Action_VIEW and should contain only one element: the data this intent is operating on.
+   *
+   * See Intent.getData() for details. */
+  public static JSONArray itemsFromData(
+          final ContentResolver contentResolver,
+          final Uri data)
+          throws JSONException
+  {
+    if (data == null) {
+      return null;
+    }
+
+    final JSONObject item = toJSONObject(
+            contentResolver,
+            data
     );
 
     if (item == null) {

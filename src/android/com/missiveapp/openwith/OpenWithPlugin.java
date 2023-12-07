@@ -170,6 +170,9 @@ public class OpenWithPlugin extends CordovaPlugin {
   @Override
   public void onNewIntent(final Intent intent) {
     log(DEBUG, "onNewIntent() " + intent.getAction());
+	log(DEBUG, intent.toString());
+
+	super.onNewIntent(intent);
 
     final JSONObject json = toJSONObject(intent);
     if (json != null) {
@@ -177,6 +180,16 @@ public class OpenWithPlugin extends CordovaPlugin {
     }
 
     processPendingIntents();
+  }
+
+  @Override
+  public void onResume(boolean multitasking) {
+      log(DEBUG, "onResume() ");
+  }
+
+  @Override
+  public void onStart() {
+      log(DEBUG, "onStart() ");
   }
 
   /**
@@ -198,6 +211,7 @@ public class OpenWithPlugin extends CordovaPlugin {
 
   /** Calls the javascript intent handlers. */
   private void sendIntentToJavascript(final JSONObject intent) {
+    log(DEBUG, "sendToJavaScript() " + intent);
     final PluginResult result = new PluginResult(PluginResult.Status.OK, intent);
 
     result.setKeepCallback(true);
