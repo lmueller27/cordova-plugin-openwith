@@ -162,10 +162,6 @@ class Serializer {
             data
     );
 
-    if (item == null) {
-      return null;
-    }
-
     final JSONObject[] items = new JSONObject[1];
     items[0] = item;
 
