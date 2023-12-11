@@ -1,4 +1,4 @@
-package com.missiveapp.openwith;
+package de.elster.openwith;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -27,15 +27,13 @@ SOFTWARE.
   xmlns="http://apache.org/cordova/ns/plugins/1.0"
   xmlns:android="http://schemas.android.com/apk/res/android"
   id="cordova-plugin-openwith"
-  version="1.0.0"
+  version="1.0.4"
 >
   <name>OpenWith</name>
   <description>Cordova "Open With" plugin for Cordova</description>
   <engines>
     <engine name="cordova" version=">=6.0.0" />
   </engines>
-  <repo>https://github.com/missive/cordova-plugin-openwith.git</repo>
-  <issue>https://github.com/missive/cordova-plugin-openwith/issues</issue>
   <license>MIT</license>
   <keywords>cordova,phonegap,openwith,ios,android</keywords>
 
@@ -111,13 +109,13 @@ SOFTWARE.
     <!-- Cordova >= 3.0.0 -->
     <config-file target="res/xml/config.xml" parent="/*">
       <feature name="OpenWithPlugin">
-        <param name="android-package" value="com.missiveapp.openwith.OpenWithPlugin"/>
+        <param name="android-package" value="de.elster.openwith.OpenWithPlugin"/>
       </feature>
     </config-file>
 
     <!-- cordova plugin src files -->
-    <source-file src="src/android/com/missiveapp/openwith/OpenWithPlugin.java" target-dir="src/com/missiveapp/openwith" />
-    <source-file src="src/android/com/missiveapp/openwith/PluginResultSender.java" target-dir="src/com/missiveapp/openwith" />
-    <source-file src="src/android/com/missiveapp/openwith/Serializer.java" target-dir="src/com/missiveapp/openwith" />
+    <source-file src="src/android/de/elster/openwith/OpenWithPlugin.java" target-dir="src/de/elster/openwith" />
+    <source-file src="src/android/de/elster/openwith/PluginResultSender.java" target-dir="src/de/elster/openwith" />
+    <source-file src="src/android/de/elster/openwith/Serializer.java" target-dir="src/de/elster/openwith" />
   </platform>
 </plugin>

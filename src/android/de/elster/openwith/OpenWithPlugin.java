@@ -1,4 +1,4 @@
-package com.missiveapp.openwith;
+package de.elster.openwith;
 
 import android.content.ContentResolver;
 import android.content.Intent;

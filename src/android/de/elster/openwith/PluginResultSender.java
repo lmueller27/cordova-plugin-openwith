@@ -1,4 +1,4 @@
-package com.missiveapp.openwith;
+package de.elster.openwith;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.PluginResult;
